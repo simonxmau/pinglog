@@ -78,7 +78,7 @@ stop_ping() {
     if [[ -n "$1" && -f "$1" ]]; then
         while read -r pid; do
             if ps -p "$pid" > /dev/null; then
-                kill -9 "$pid"
+                kill -2 "$pid" # -2: send SIGINT signal
                 echo "Stopped process: $pid"
             else
                 echo "Process $pid does not exist"
